@@ -1,0 +1,167 @@
+/* Basic Reset & Body Setup */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Chat Container */
+#chat-container {
+    width: 100%;
+    max-width: 700px; /* Max width of the chat window */
+    height: 90vh;    /* 90% of the viewport height */
+    max-height: 800px; /* Max height */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensures children don't overflow rounded corners */
+}
+
+/* Messages Area */
+.chat-messages-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Space between messages */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Individual Message Bubbles */
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word; /* Ensure long words don't overflow */
+    line-height: 1.5;
+}
+
+.message p {
+    white-space: pre-wrap; /* Preserves whitespace and newlines */
+    margin: 0;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px; /* Makes it look more like a speech bubble */
+}
+
+.ai-message {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px; /* Makes it look more like a speech bubble */
+}
+
+/* Typing Indicator */
+.ai-message.typing {
+    color: #6c757d;
+    font-style: italic;
+}
+.ai-message.typing::after {
+    content: '...';
+    display: inline-block;
+    animation: typing-ellipsis 1.5s infinite;
+}
+
+@keyframes typing-ellipsis {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+    100% { content: '.'; }
+}
+
+
+/* Chat Input Area */
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa; /* Slightly different background for input area */
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 20px; /* Pill shape */
+    resize: none; /* Prevent manual resizing */
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 24px; /* Minimum height for one line of text */
+    max-height: 120px; /* Allow up to roughly 5 lines before scrolling */
+    overflow-y: auto; /* Scroll within textarea if content exceeds max-height */
+    margin-right: 10px;
+}
+
+#message-input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+#send-button:disabled {
+    background-color: #a0c7e4;
+    cursor: not-allowed;
+}
+
+/* Optional: Custom Scrollbar Styling (for WebKit browsers like Chrome, Safari) */
+.chat-messages-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-messages-area::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 10px;
+}
+
+.chat-messages-area::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+#message-input::-webkit-scrollbar {
+    width: 6px;
+}
+#message-input::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+    border-radius: 6px;
+}
+#message-input::-webkit-scrollbar-thumb:hover {
+    background: #b0b0b0;
+}
+```
